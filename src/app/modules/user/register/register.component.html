@@ -1,0 +1,26 @@
+<h1>Register new account</h1>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="inputName">Full name</label>
+        <input type="text" class="form-control" id="inputName" placeholder="Enter name" formControlName="fullname">
+    </div>
+    <div class="form-group">
+        <label for="userName">Username</label>
+        <input type="text" class="form-control" id="userName" placeholder="Enter name" formControlName="username">
+    </div>
+    <div class="form-group">
+        <label for="inputEmail">Email address</label>
+        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email"
+            formControlName="email">
+    </div>
+    <div class="form-group">
+        <label for="inputPassword">Password</label>
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password"
+            formControlName="password">
+    </div>
+    <div class="btn-group btn-block" role="group" aria-label="Actions">
+        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+    </div>
+
+</form>

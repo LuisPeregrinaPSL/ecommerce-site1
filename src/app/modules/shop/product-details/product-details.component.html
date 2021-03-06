@@ -1,0 +1,35 @@
+<div class="card">
+    <div class="card-header">
+        {{product.category}}
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img [src]="product.picture" class="card-img-bottom" alt="image of {{product.name}}">
+        </div>
+        <div class="col-md-6">
+            <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">Price: ${{product.price | number: '1.2'}}</p>
+
+                <div class="row my-1">
+                    <div class="col-12">
+                        <a class="card-link btn btn-primary btn-block" *ngIf="userService.isLoggedIn()"
+                            (click)="cartService.addProduct(product.id)">
+                            <fa-icon [icon]="faPlusSquare"></fa-icon> Add to cart
+                        </a>
+                    </div>
+                </div>
+                <div class="row my-1">
+                    <div class="col-12">
+                        <a class="card-link btn btn-primary btn-block" *ngIf="userService.isAdmin()"
+                            (click)="removeProduct(product.id)">
+                            <fa-icon [icon]="faTrashAlt"></fa-icon> Delete
+                        </a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

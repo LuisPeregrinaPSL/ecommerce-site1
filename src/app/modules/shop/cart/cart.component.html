@@ -1,0 +1,33 @@
+<h1>Cart</h1>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let product of list">
+        <div class="row">
+            <div class="col-1">
+                <img src="{{product.picture}}" alt="image of {{product.name}}">
+            </div>
+
+            <div class="col-auto flex-grow-1">
+
+                <span class="badge bg-primary">{{product.category}}</span>
+                {{product.name}}
+            </div>
+            <div class="col-2">
+                <button class="btn btn-danger" (click)="delete(product.id)">
+                    <fa-icon [icon]="faTrashAlt"></fa-icon>
+                </button>
+            </div>
+
+        </div>
+    </li>
+</ul>
+
+<div class="row">
+    <div class="col-auto"></div>
+    <div class="col-6">
+        <p>Total ({{list.length}}): </p>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" disabled
+                [value]="getTotal() | number: '1.2'">
+        </div>
+    </div>

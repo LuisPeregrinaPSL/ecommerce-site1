@@ -1,0 +1,27 @@
+<h1>My Account</h1>
+
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <label for="user-username" class="form-label">Username</label>
+    <div class="input-group">
+        <input type="text" class="form-control" id="user-username" value="{{user.username}}" disabled>
+    </div>
+
+    <label for="user-fullname" class="form-label">Full name</label>
+    <div class="input-group">
+        <input type="text" class="form-control" id="user-fullname" formControlName="fullname">
+    </div>
+
+    <label for="user-email" class="form-label">Email</label>
+    <div class="input-group">
+        <input type="text" class="form-control" id="user-email" formControlName="email">
+    </div>
+
+    <label for="user-password" class="form-label">Password</label>
+    <div class="input-group">
+        <input type="password" class="form-control" id="user-password" formControlName="password">
+    </div>
+
+    <div class="btn-group btn-block my-3" role="group" aria-label="Actions">
+        <button type="submit" class="btn btn-primary" [disabled]="!canUpdate">Update</button>
+    </div>
+</form>
