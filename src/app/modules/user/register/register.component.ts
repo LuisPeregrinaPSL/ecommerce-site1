@@ -6,54 +6,59 @@ import { UserService } from 'src/app/services/user.service';
 import { Constants } from '../../../constants';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrls: ['./register.component.sass']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.sass']
 })
 export class RegisterComponent implements OnInit {
-    registerForm = new FormGroup({
-        fullname: new FormControl('', [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(200)
-        ]),
-        username: new FormControl('', [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30)
-        ]),
-        email: new FormControl('', [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30),
-            Validators.email
-        ]),
-        password: new FormControl('', [
-            Validators.required,
-            Validators.minLength(3),
-            Validators.maxLength(30)
-        ])
-    });
+  registerForm = new FormGroup({
+    fullname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(200)
+    ]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30),
+      Validators.email
+    ]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(30)
+    ]),
+    admin: new FormControl(false)
+  });
 
-    constructor(private location: Location, private router: Router, private userService: UserService) { }
+  constructor(private location: Location, private router: Router, private userService: UserService) { }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+  }
+
+  onSubmit() {
+    // Add user
+    const user = this.userService.addUser(
+      this.registerForm.value.fullname,
+      this.registerForm.value.username,
+      this.registerForm.value.email,
+      this.registerForm.value.password);
+    // Login
+    this.userService.challengeLogin(this.registerForm.value.username, this.registerForm.value.password);
+    // Admin setup
+    if (this.registerForm.value.admin) {
+      this.userService.setAdmin(user);
     }
+    // Go to home
+    this.router.navigate(['/']);
+  }
 
-    onSubmit() {
-        // Add user
-        const user = this.userService.addUser(
-            this.registerForm.value.fullname,
-            this.registerForm.value.username,
-            this.registerForm.value.email,
-            this.registerForm.value.password);
-        // Login
-        this.userService.challengeLogin(this.registerForm.value.username, this.registerForm.value.password);
-        // Go to home
-        this.router.navigate(['/']);
-    }
-
-    onCancel() {
-        this.location.back();
-    }
+  onCancel() {
+    this.location.back();
+  }
 }

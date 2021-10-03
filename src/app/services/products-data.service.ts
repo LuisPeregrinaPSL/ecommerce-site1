@@ -28,6 +28,16 @@ export class ProductsDataService {
         return ProductsDataService.productList;
     }
 
+
+    addProduct(id: number, name: string, price: number, pictureId: string, category?: string) {
+        const product = new Product(id, name, price, pictureId, category);
+        this.addFromProduct(product);
+    }
+
+    addFromProduct(product: Product) {
+        ProductsDataService.productList.push(product);
+    }
+
     removeProduct(id: number) {
         const index = ProductsDataService.productList.findIndex((product: Product) => product.id === id);
         if (index === -1) {

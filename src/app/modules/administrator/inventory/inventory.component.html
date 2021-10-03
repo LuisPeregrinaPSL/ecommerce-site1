@@ -1,1 +1,32 @@
-<p>inventory works!</p>
+<h1>Inventory</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Category</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of productsDataService.getProducts()">
+            <th scope="row">{{product.id}}</th>
+            <td>{{product.category}}</td>
+            <td>{{product.name}}</td>
+            <td>
+                <button class="btn btn-primary mx-1" (click)="editProduct(product.id)">
+                    <fa-icon [icon]="faEdit"> Edit</fa-icon>
+                </button>
+
+                <button class="btn btn-warning mx-1" (click)="removeProduct(product.id)">
+                    <fa-icon [icon]="faTrashAlt"> Delete</fa-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-primary" (click)="addNewProduct()">
+    <fa-icon [icon]="faPlusSquare"> Add</fa-icon>
+</button>
