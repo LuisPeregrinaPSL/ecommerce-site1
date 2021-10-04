@@ -8,16 +8,16 @@
     <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+                <a class="nav-link" [routerLink]="['']">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/products">Products</a>
+                <a class="nav-link" [routerLink]="['products']">Products</a>
             </li>
             <li class="nav-item" ngbDropdown>
                 <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">Categories</a>
                 <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
-                    <a ngbDropdownItem href="/products?category=cat1">Category 1</a>
-                    <a ngbDropdownItem href="/products?category=cat2">Category 2</a>
+                    <a ngbDropdownItem [routerLink]="['products']" [queryParams]="{'category':'cat1'}">Category 1</a>
+                    <a ngbDropdownItem [routerLink]="['products']" [queryParams]="{'category':'cat2'}">Category 2</a>
                 </div>
             </li>
         </ul>
@@ -33,7 +33,7 @@
                 </div>
             </form>
             <li class="nav-item" *ngIf="!loggedInUser">
-                <a class="nav-link" href="/login">Login</a>
+                <a class="nav-link" [routerLink]="['login']">Login</a>
             </li>
             <li class="nav-item" ngbDropdown *ngIf="loggedInUser">
                 <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">
@@ -41,24 +41,24 @@
                 </a>
 
                 <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu dropdown-menu-right">
-                    <a ngbDropdownItem href="/my-account">
+                    <a ngbDropdownItem [routerLink]="['my-account']">
                         <fa-icon [icon]="faCog"></fa-icon> My Account
                     </a>
-                    <a ngbDropdownItem href="/cart">
+                    <a ngbDropdownItem [routerLink]="['cart']">
                         <fa-icon [icon]="faShoppingCart"></fa-icon> Cart
                     </a>
                     <div *ngIf="isAdmin">
                         <div class="dropdown-divider"></div>
                         <a ngbDropdownItem class="disabled">Administration</a>
-                        <a ngbDropdownItem href="/users">
+                        <a ngbDropdownItem [routerLink]="['users']">
                             <fa-icon [icon]="faUsers"></fa-icon> Users
                         </a>
-                        <a ngbDropdownItem href="/inventory">
+                        <a ngbDropdownItem [routerLink]="['inventory']">
                             <fa-icon [icon]="faClipboardList"></fa-icon> Inventory
                         </a>
                         <div class="dropdown-divider"></div>
                     </div>
-                    <a ngbDropdownItem href="/logout">
+                    <a ngbDropdownItem [routerLink]="['logout']">
                         <fa-icon [icon]="faSignOutAlt"></fa-icon> Logout
                     </a>
                 </div>
