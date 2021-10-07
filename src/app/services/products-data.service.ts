@@ -3,13 +3,11 @@ import { InexistingProductError } from '../errors/inexisting-product-error';
 import { Product } from '../models/product';
 import { Utils } from '../utils';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class ProductsDataService {
     static minPrice = 1;
     static maxPrice = 300;
-    private static productList = [
+    protected static productList = [
         new Product(1, 'Alpha', Utils.randBetween(ProductsDataService.minPrice, ProductsDataService.maxPrice), '1', 'Frozen'),
         new Product(2, 'Beta', Utils.randBetween(ProductsDataService.minPrice, ProductsDataService.maxPrice), '2', 'Fruits'),
         new Product(3, 'Gamma', Utils.randBetween(ProductsDataService.minPrice, ProductsDataService.maxPrice), '3', 'Deco'),
