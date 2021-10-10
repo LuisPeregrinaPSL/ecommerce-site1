@@ -6,24 +6,27 @@ import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
-    declarations: [
-        NavbarComponent,
-        HomeComponent,
-        FooterComponent
-    ],
-    imports: [
-        CommonModule,
-        FontAwesomeModule,
-        NgbModule,
-        RouterModule
-    ],
-    exports: [
-        NavbarComponent,
-        HomeComponent,
-        FooterComponent
-    ]
+  declarations: [
+    NavbarComponent,
+    HomeComponent,
+    FooterComponent,
+    HeaderComponent
+  ],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    NgbModule,
+    RouterModule
+  ],
+  exports: [
+    NavbarComponent,
+    HomeComponent,
+    FooterComponent,
+    HeaderComponent
+  ]
 })
 export class SharedModule { }
