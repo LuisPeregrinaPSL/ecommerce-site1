@@ -32,7 +32,7 @@ export class InventoryComponent implements OnInit {
   }
 
   updatePrice(id: number, newPrice: number) {
-    const product = this.productsDataService.getProductById(id)
+    const product = this.productsDataService.getProductById(id);
     if (product) {
       product.price = newPrice;
     }
