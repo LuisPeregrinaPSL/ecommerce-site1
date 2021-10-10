@@ -13,53 +13,53 @@ import { UserPermission } from './modules/user/user-permission';
 import { AdministratorPermission } from './modules/administrator/administrator-permission';
 
 const routes: Routes = [
-    {
-        path: '',
-        component: HomeComponent
-    },
-    {
-        path: 'products',
-        component: ProductsComponent
-    },
-    {
-        path: 'cart',
-        component: CartComponent,
-        canActivate: [UserPermission]
-    },
-    {
-        path: 'my-account',
-        component: MyAccountComponent,
-        canActivate: [UserPermission]
-    },
-    {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'logout',
-        component: LogoutComponent,
-        canActivate: [UserPermission]
-    },
-    {
-        path: 'register',
-        component: RegisterComponent
-    },
-    {
-        path: 'users',
-        component: UsersComponent,
-        canActivate: [UserPermission, AdministratorPermission]
-    },
-    {
-        path: 'inventory',
-        component: InventoryComponent,
-        canActivate: [UserPermission, AdministratorPermission]
-    }
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'products',
+    component: ProductsComponent
+  },
+  {
+    path: 'cart',
+    component: CartComponent,
+    canActivate: [UserPermission]
+  },
+  {
+    path: 'my-account',
+    component: MyAccountComponent,
+    canActivate: [UserPermission]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
+    canActivate: [UserPermission]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [UserPermission, AdministratorPermission]
+  },
+  {
+    path: 'inventory',
+    component: InventoryComponent,
+    canActivate: [UserPermission, AdministratorPermission]
+  }
 
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
-    providers: [UserPermission, AdministratorPermission]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
+  providers: [UserPermission, AdministratorPermission]
 })
 export class AppRoutingModule { }

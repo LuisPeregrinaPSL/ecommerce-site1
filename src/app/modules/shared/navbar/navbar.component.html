@@ -1,70 +1,73 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-    <span class="navbar-brand">E-Commerce Site 1</span>
-    <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed"
-        aria-label="Toggle navigation" (click)="collapsed = !collapsed">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <span class="navbar-brand">E-Commerce Site 1</span>
+  <button class="navbar-toggler" type="button" aria-controls="navbarContent" [attr.aria-expanded]="!collapsed"
+    aria-label="Toggle navigation" (click)="collapsed = !collapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['']">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['products']">Products</a>
-            </li>
-            <li class="nav-item" ngbDropdown>
-                <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">Categories</a>
-                <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
-                    <a ngbDropdownItem [routerLink]="['products']" [queryParams]="{'category':'cat1'}">Category 1</a>
-                    <a ngbDropdownItem [routerLink]="['products']" [queryParams]="{'category':'cat2'}">Category 2</a>
-                </div>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <form class="form-inline mr-4">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" aria-label="Search">
-                            <fa-icon [icon]="faSearch"></fa-icon>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <li class="nav-item" *ngIf="!loggedInUser">
-                <a class="nav-link" [routerLink]="['login']">Login</a>
-            </li>
-            <li class="nav-item" ngbDropdown *ngIf="loggedInUser">
-                <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">
-                    <fa-icon [icon]="faUser"></fa-icon> {{loggedInUser}}
-                </a>
+  <div class="navbar-collapse" [class.collapse]="collapsed" id="navbarContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['']">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['products']">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['inventory']">Inventory</a>
+      </li>
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">Categories</a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu">
+          <a ngbDropdownItem [routerLink]="['products']" [queryParams]="{'category':'cat1'}">Category 1</a>
+          <a ngbDropdownItem [routerLink]="['products']" [queryParams]="{'category':'cat2'}">Category 2</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <form class="form-inline mr-4">
+        <div class="input-group">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" aria-label="Search">
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </button>
+          </div>
+        </div>
+      </form>
+      <li class="nav-item" *ngIf="!loggedInUser">
+        <a class="nav-link" [routerLink]="['login']">Login</a>
+      </li>
+      <li class="nav-item" ngbDropdown *ngIf="loggedInUser">
+        <a class="nav-link" tabindex="0" ngbDropdownToggle id="navbarDropdown1" role="button">
+          <fa-icon [icon]="faUser"></fa-icon> {{loggedInUser}}
+        </a>
 
-                <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu dropdown-menu-right">
-                    <a ngbDropdownItem [routerLink]="['my-account']">
-                        <fa-icon [icon]="faCog"></fa-icon> My Account
-                    </a>
-                    <a ngbDropdownItem [routerLink]="['cart']">
-                        <fa-icon [icon]="faShoppingCart"></fa-icon> Cart
-                    </a>
-                    <div *ngIf="isAdmin">
-                        <div class="dropdown-divider"></div>
-                        <a ngbDropdownItem class="disabled">Administration</a>
-                        <a ngbDropdownItem [routerLink]="['users']">
-                            <fa-icon [icon]="faUsers"></fa-icon> Users
-                        </a>
-                        <a ngbDropdownItem [routerLink]="['inventory']">
-                            <fa-icon [icon]="faClipboardList"></fa-icon> Inventory
-                        </a>
-                        <div class="dropdown-divider"></div>
-                    </div>
-                    <a ngbDropdownItem [routerLink]="['logout']">
-                        <fa-icon [icon]="faSignOutAlt"></fa-icon> Logout
-                    </a>
-                </div>
-            </li>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown1" class="dropdown-menu dropdown-menu-right">
+          <a ngbDropdownItem [routerLink]="['my-account']">
+            <fa-icon [icon]="faCog"></fa-icon> My Account
+          </a>
+          <a ngbDropdownItem [routerLink]="['cart']">
+            <fa-icon [icon]="faShoppingCart"></fa-icon> Cart
+          </a>
+          <div *ngIf="isAdmin">
+            <div class="dropdown-divider"></div>
+            <a ngbDropdownItem class="disabled">Administration</a>
+            <a ngbDropdownItem [routerLink]="['users']">
+              <fa-icon [icon]="faUsers"></fa-icon> Users
+            </a>
+            <a ngbDropdownItem [routerLink]="['inventory']">
+              <fa-icon [icon]="faClipboardList"></fa-icon> Inventory
+            </a>
+            <div class="dropdown-divider"></div>
+          </div>
+          <a ngbDropdownItem [routerLink]="['logout']">
+            <fa-icon [icon]="faSignOutAlt"></fa-icon> Logout
+          </a>
+        </div>
+      </li>
 
-        </ul>
+    </ul>
 
-    </div>
+  </div>
 </nav>

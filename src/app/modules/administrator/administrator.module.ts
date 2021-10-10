@@ -6,13 +6,15 @@ import { UsersComponent } from './users/users.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InventoryEditorComponent } from './inventory-editor/inventory-editor.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PriceUpdaterComponent } from './price-updater/price-updater.component';
 
 
 @NgModule({
     declarations: [
         InventoryComponent,
         UsersComponent,
-        InventoryEditorComponent
+        InventoryEditorComponent,
+        PriceUpdaterComponent
     ],
     imports: [
         CommonModule,
